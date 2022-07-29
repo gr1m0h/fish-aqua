@@ -1,25 +1,25 @@
 function __fish_aqua_needs_command
-	set cmd (commandline -opc)
-	if [ (count $cmd) -eq 1 -a $cmd[1] = "aqua" ]
-		return 0
-	end
-	return 1
+    set cmd (commandline -opc)
+    if [ (count $cmd) -eq 1 -a $cmd[1] = "aqua" ]
+        return 0
+    end
+    return 1
 end
 
 function __fish_aqua_using_command
-	set cmd (commandline -opc)
-	if [ (count $cmd) -gt 1 ]
-		if [ $argv[1] = $cmd[2] ]
-			return 0
-		end
-	end
-	return 1
+    set cmd (commandline -opc)
+    if [ (count $cmd) -gt 1 ]
+        if [ $argv[1] = $cmd[2] ]
+            return 0
+        end
+    end
+    return 1
 end
 
 function __fish_aqua_help_topics
-	for c in init install generate which exec list generate-registry completion version
-		printf "%s\thelp topic\n" $c
-	end
+    for c in init install generate which exec list generate-registry completion version
+        printf "%s\thelp topic\n" $c
+    end
 end
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a help -d "Shows a list of commands or help for one command"
@@ -55,4 +55,3 @@ complete -f -c aqua -n "__fish_aqua_needs_command" -l help -s h -d "show help (d
 complete -f -c aqua -n "__fish_aqua_needs_command" -l log-level -d "log level [\$AQUA_LOG_LEVEL]"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l trace -d "trace output file path"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l version -s v -d "print the version (default: false)"
-
