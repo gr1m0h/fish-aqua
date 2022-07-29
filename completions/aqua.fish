@@ -1,0 +1,58 @@
+function __fish_aqua_needs_command
+	set cmd (commandline -opc)
+	if [ (count $cmd) -eq 1 -a $cmd[1] = "aqua" ]
+		return 0
+	end
+	return 1
+end
+
+function __fish_aqua_using_command
+	set cmd (commandline -opc)
+	if [ (count $cmd) -gt 1 ]
+		if [ $argv[1] = $cmd[2] ]
+			return 0
+		end
+	end
+	return 1
+end
+
+function __fish_aqua_help_topics
+	for c in init install generate which exec list generate-registry completion version
+		printf "%s\thelp topic\n" $c
+	end
+end
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a help -d "Shows a list of commands or help for one command"
+complete -f -c aqua -n "__fish_aqua_using_command help" -a "(__fish_aqua_help_topics)"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a init -d "Create a configuration file if it doesn't exist"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a install -d "Install tools"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -l all -s a -d "install all aqua configuration packages (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -l only-link -s l -d "create links but skip downloading packages (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -l test -d "test file.src after installing the package (default: false)"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a generate -d "Search packages in registries and output the configuration interactively"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -l select-version -s s -d "Select the installed version interactively (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -s f -d "the file path of packages list. When the value is "-", the list is passed from the standard input"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -s i -d "Insert packages to configuration file (default: false)"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a which -d "Output the absolute file path of the given command"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a exec -d "Execute tool"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a list -d "List packages in Registries"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a generate-registry -d "Generate a registry's package configuration"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a completion -d "Output shell completion script for bash or zsh"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a version -d "Show version"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -l config -s c -d "configuration file path [\$AQUA_CONFIG]"
+complete -f -c aqua -n "__fish_aqua_needs_command" -l cpu-profile -d "cpu profile output file path"
+complete -f -c aqua -n "__fish_aqua_needs_command" -l help -s h -d "show help (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command" -l log-level -d "log level [\$AQUA_LOG_LEVEL]"
+complete -f -c aqua -n "__fish_aqua_needs_command" -l trace -d "trace output file path"
+complete -f -c aqua -n "__fish_aqua_needs_command" -l version -s v -d "print the version (default: false)"
+
