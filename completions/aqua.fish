@@ -17,7 +17,7 @@ function __fish_aqua_using_command
 end
 
 function __fish_aqua_help_topics
-    for c in init install generate which exec list generate-registry completion version
+    for c in init install generate which exec list generate-registry completion version cp
         printf "%s\thelp topic\n" $c
     end
 end
@@ -48,6 +48,9 @@ complete -f -c aqua -n "__fish_aqua_needs_command" -a generate-registry -d "Gene
 complete -f -c aqua -n "__fish_aqua_needs_command" -a completion -d "Output shell completion script for bash or zsh"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a version -d "Show version"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a cp -d "Copy executable files in a directory"
+complete -f -c aqua -n "__fish_aqua_needs_command cp" -s o -d 'destination directory (default: "dist")'
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -l config -s c -d "configuration file path [\$AQUA_CONFIG]"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l cpu-profile -d "cpu profile output file path"
