@@ -17,7 +17,7 @@ function __fish_aqua_using_command
 end
 
 function __fish_aqua_help_topics
-    for c in init install generate which exec list generate-registry completion version cp
+    for c in init install generate which exec list generate-registry completion version cp update-checksum
         printf "%s\thelp topic\n" $c
     end
 end
@@ -28,14 +28,15 @@ complete -f -c aqua -n "__fish_aqua_using_command help" -a "(__fish_aqua_help_to
 complete -f -c aqua -n "__fish_aqua_needs_command" -a init -d "Create a configuration file if it doesn't exist"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a install -d "Install tools"
-complete -f -c aqua -n "__fish_aqua_needs_command install" -l all -s a -d "install all aqua configuration packages (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command install" -l only-link -s l -d "create links but skip downloading packages (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command install" -l test -d "test file.src after installing the package (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -l all -s a -d "install all aqua configuration packages (default: false)"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a generate -d "Search packages in registries and output the configuration interactively"
-complete -f -c aqua -n "__fish_aqua_needs_command install" -l select-version -s s -d "Select the installed version interactively (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command install" -s f -d "the file path of packages list. When the value is "-", the list is passed from the standard input"
 complete -f -c aqua -n "__fish_aqua_needs_command install" -s i -d "Insert packages to configuration file (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -s o -d "inserted file"
+complete -f -c aqua -n "__fish_aqua_needs_command install" -l select-version -s s -d "Select the installed version interactively (default: false)"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a which -d "Output the absolute file path of the given command"
 
@@ -51,6 +52,11 @@ complete -f -c aqua -n "__fish_aqua_needs_command" -a version -d "Show version"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a cp -d "Copy executable files in a directory"
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -s o -d 'destination directory (default: "dist")'
+complete -f -c aqua -n "--fish_aqua_needs_command cp" -l all -s a -d "install all aqua configuration packages (default: false)"
+
+complete -f -c aqua -n "--fish_aqua_needs_command" -a update-checksum -d "Create or Update .aqua-checksums.json"
+complete -f -c aqua -n "--fish_aqua_needs_command update-checksum" -l all -s a -d "Create or Update all .aqua-checksums.json including global configuration (default: false)"
+complete -f -c aqua -n "--fish_aqua_needs_command update-checksum" -l deep -d "If a package's checksum configuration is disabled, download the asset and calculate the checksum (default: false)"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -l config -s c -d "configuration file path [\$AQUA_CONFIG]"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l cpu-profile -d "cpu profile output file path"
