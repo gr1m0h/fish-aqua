@@ -54,9 +54,9 @@ complete -f -c aqua -n "__fish_aqua_needs_command" -a cp -d "Copy executable fil
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -s o -d 'destination directory (default: "dist")'
 complete -f -c aqua -n "--fish_aqua_needs_command cp" -l all -s a -d "install all aqua configuration packages (default: false)"
 
-complete -f -c aqua -n "--fish_aqua_needs_command" -a update-checksum -d "Create or Update .aqua-checksums.json"
-complete -f -c aqua -n "--fish_aqua_needs_command update-checksum" -l all -s a -d "Create or Update all .aqua-checksums.json including global configuration (default: false)"
-complete -f -c aqua -n "--fish_aqua_needs_command update-checksum" -l deep -d "If a package's checksum configuration is disabled, download the asset and calculate the checksum (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command" -a update-checksum -d "Create or Update .aqua-checksums.json"
+complete -f -c aqua -n "__fish_aqua_needs_command cp" -l all -s a -d "Create or Update all .aqua-checksums.json including global configuration (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command cp" -l deep -d "If a package's checksum configuration is disabled, download the asset and calculate the checksum (default: false)"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -l config -s c -d "configuration file path [\$AQUA_CONFIG]"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l cpu-profile -d "cpu profile output file path"
