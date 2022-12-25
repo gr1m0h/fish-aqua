@@ -22,6 +22,12 @@ function __fish_aqua_help_topics
     end
 end
 
+function __fish_aqua_completion_topics
+    for c in bash zsh
+        printf "%s\tcompletion topic\n" $c
+    end
+end
+
 complete -f -c aqua -n "__fish_aqua_needs_command" -a help -d "Shows a list of commands or help for one command"
 complete -f -c aqua -n "__fish_aqua_using_command help" -a "(__fish_aqua_help_topics)"
 
@@ -54,6 +60,7 @@ complete -f -c aqua -n "__fish_aqua_needs_command" -a list -d "List packages in 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a generate-registry -d "Generate a registry's package configuration"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a completion -d "Output shell completion script for bash or zsh"
+complete -f -c aqua -n "__fish_aqua_using_command completion" -a "(__fish_aqua_completion_topics)"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a version -d "Show version"
 
