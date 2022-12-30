@@ -73,6 +73,7 @@ complete -f -c aqua -n "__fish_aqua_needs_command cp" -l exclude-tags -d "exclud
 complete -f -c aqua -n "__fish_aqua_needs_command" -a update-checksum -d "Create or Update .aqua-checksums.json"
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l all -s a -d "Create or Update all .aqua-checksums.json including global configuration (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l deep -d "If a package's checksum configuration is disabled, download the asset and calculate the checksum (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command cp" -l prune -d "Remove unused checksums (default: false)"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -l config -s c -d "configuration file path [\$AQUA_CONFIG]"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l cpu-profile -d "cpu profile output file path"
