@@ -75,9 +75,9 @@ complete -f -c aqua -n "__fish_aqua_needs_command cp" -l all -s a -d "Create or 
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l deep -d "If a package's checksum configuration is disabled, download the asset and calculate the checksum (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l prune -d "Remove unused checksums (default: false)"
 
+complete -f -c aqua -n "__fish_aqua_needs_command" -l log-level -d "log level [\$AQUA_LOG_LEVEL]"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l config -s c -d "configuration file path [\$AQUA_CONFIG]"
+complete -f -c aqua -n "__fish_aqua_needs_command" -l trace -d "trace output file path"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l cpu-profile -d "cpu profile output file path"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l help -s h -d "show help (default: false)"
-complete -f -c aqua -n "__fish_aqua_needs_command" -l log-level -d "log level [\$AQUA_LOG_LEVEL]"
-complete -f -c aqua -n "__fish_aqua_needs_command" -l trace -d "trace output file path"
 complete -f -c aqua -n "__fish_aqua_needs_command" -l version -s v -d "print the version (default: false)"
