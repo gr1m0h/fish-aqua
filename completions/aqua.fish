@@ -17,7 +17,7 @@ function __fish_aqua_using_command
 end
 
 function __fish_aqua_help_topics
-    for c in init init-policy install update-aqua generate which exec list generate-registry completion version cp update-checksum
+    for c in init init-policy policy install update-aqua generate which exec list generate-registry completion version cp root-dir update-checksum
         printf "%s\thelp topic\n" $c
     end
 end
@@ -37,6 +37,8 @@ complete -f -c aqua -n "__fish_aqua_needs_command init" -l help -s h -d "show he
 complete -f -c aqua -n "__fish_aqua_needs_command" -a init-policy -d "Create a policy file if it doesn't exist"
 complete -f -c aqua -n "__fish_aqua_needs_command init-policy" -l help -s h -d "show help"
 
+complete -f -c aqua -n "__fish_aqua_needs_command" -a policy -d "Manage Policy"
+
 complete -f -c aqua -n "__fish_aqua_needs_command" -a install -d "Install tools"
 complete -f -c aqua -n "__fish_aqua_needs_command install" -l only-link -s l -d "create links but skip downloading packages (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command install" -l test -d "This flag was deprecated and had no meaning from aqua v2.0.0. This flag will be removed in aqua v3.0.0. https://github.com/aquaproj/aqua/issues/1691 (default: false)"
@@ -52,6 +54,7 @@ complete -f -c aqua -n "__fish_aqua_needs_command" -a generate -d "Search packag
 complete -f -c aqua -n "__fish_aqua_needs_command generate" -s f -d "the file path of packages list. When the value is "-", the list is passed from the standard input"
 complete -f -c aqua -n "__fish_aqua_needs_command generate" -s i -d "Insert packages to configuration file (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command gemerate" -l pin -d "Pin version (default: false)"
+complete -f -c aqua -n "__fish_aqua_needs_command gemerate" -l detail -s d -d "Output additional fields such as description and link (default: false) [$AQUA_GENERATE_WITH_DETAIL]"
 complete -f -c aqua -n "__fish_aqua_needs_command generate" -s o -d "inserted file"
 complete -f -c aqua -n "__fish_aqua_needs_command generate" -l select-version -s s -d "Select the installed version interactively (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command generate" -l help -s h -d "show help"
@@ -82,6 +85,9 @@ complete -f -c aqua -n "__fish_aqua_needs_command cp" -s o -d 'destination direc
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l all -s a -d "install all aqua configuration packages (default: false)"
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l tags -s t -d "filter installed packages with tags"
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l exclude-tags -d "exclude installed packages with tags"
+complete -f -c aqua -n "__fish_aqua_needs_command cp" -l help -s h -d "show help"
+
+complete -f -c aqua -n "__fish_aqua_needs_command" -a root-dir -d "Output the aqua root directory (AQUA_ROOT_DIR)"
 complete -f -c aqua -n "__fish_aqua_needs_command cp" -l help -s h -d "show help"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a update-checksum -d "Create or Update .aqua-checksums.json"
