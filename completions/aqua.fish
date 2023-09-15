@@ -17,7 +17,7 @@ function __fish_aqua_using_command
 end
 
 function __fish_aqua_help_topics
-    for c in init init-policy policy install update-aqua generate which exec list generate-registry completion version cp root-dir update-checksum
+    for c in init info init-policy policy install update-aqua generate which exec list generate-registry completion version cp root-dir update-checksum
         printf "%s\thelp topic\n" $c
     end
 end
@@ -28,16 +28,27 @@ function __fish_aqua_completion_topics
     end
 end
 
+function __fish_aqua_policy_topics
+    for c in allow deny init help
+        printf "%s\tpolicy topic\n" $c
+    end
+end
+
 complete -f -c aqua -n "__fish_aqua_needs_command" -a help -d "Shows a list of commands or help for one command"
 complete -f -c aqua -n "__fish_aqua_using_command help" -a "(__fish_aqua_help_topics)"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a init -d "Create a configuration file if it doesn't exist"
 complete -f -c aqua -n "__fish_aqua_needs_command init" -l help -s h -d "show help"
 
+complete -f -c aqua -n "__fish_aqua_needs_command" -a info -d ""
+complete -f -c aqua -n "__fish_aqua_needs_command info" -l help -s h -d "show help"
+
 complete -f -c aqua -n "__fish_aqua_needs_command" -a init-policy -d "Create a policy file if it doesn't exist"
 complete -f -c aqua -n "__fish_aqua_needs_command init-policy" -l help -s h -d "show help"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a policy -d "Manage Policy"
+complete -f -c aqua -n "__fish_aqua_using_command policy" -a "(__fish_aqua_policy_topics)"
+complete -f -c aqua -n "__fish_aqua_needs_command policy" -l help -s h -d "show help"
 
 complete -f -c aqua -n "__fish_aqua_needs_command" -a install -d "Install tools"
 complete -f -c aqua -n "__fish_aqua_needs_command install" -l only-link -s l -d "create links but skip downloading packages (default: false)"
